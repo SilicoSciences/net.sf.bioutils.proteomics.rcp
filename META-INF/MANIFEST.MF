@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: BioUitls -Proteomics - RCP
+Bundle-Name: BioUtils -Proteomics - RCP
 Bundle-SymbolicName: net.sf.bioutils.proteomics.rcp
 Bundle-Version: 0.0.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
