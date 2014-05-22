@@ -11,12 +11,9 @@ import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
@@ -29,10 +26,6 @@ public class DialogDatabase extends Dialog {
     private Text textdb;
 
     private Label labeldb;
-
-    private Button buttonIsMultiSpecies;
-
-    private boolean multispecies = false;
 
     private String db = "n/a";
 
@@ -65,20 +58,6 @@ public class DialogDatabase extends Dialog {
             }
         });
 
-        buttonIsMultiSpecies = new Button(container, SWT.CHECK);
-        buttonIsMultiSpecies.setText("Contains muliple species?");
-        buttonIsMultiSpecies.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-        buttonIsMultiSpecies.addSelectionListener(new SelectionListener() {
-            @Override
-            public void widgetDefaultSelected(final SelectionEvent e) {
-                multispecies = false;
-            }
-
-            @Override
-            public void widgetSelected(final SelectionEvent e) {
-                multispecies = !multispecies;
-            }
-        });
         final DropTarget dt = new DropTarget(textdb, DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK);
         dt.setTransfer(new Transfer[] { FileTransfer.getInstance(), PluginTransfer.getInstance() });
         dt.addDropListener(new DropTargetAdapter() {
@@ -106,6 +85,6 @@ public class DialogDatabase extends Dialog {
     }
 
     public String getResult() {
-        return db.trim() + "," + multispecies;
+        return db.trim();
     }
 }

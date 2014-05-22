@@ -4,25 +4,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.kerner.utils.pair.KeyValue;
-
 import org.eclipse.jface.preference.ListEditor;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Composite;
 
 public class ListEditorDatabase extends ListEditor {
-
-    public static class Entry extends KeyValue<String, Boolean> {
-
-        public Entry(final KeyValue<String, Boolean> template) {
-            super(template);
-        }
-
-        public Entry(final String key, final Boolean value) {
-            super(key, value);
-        }
-
-    }
 
     public ListEditorDatabase() {
         super();
@@ -42,15 +28,15 @@ public class ListEditorDatabase extends ListEditor {
         return sb.toString();
     }
 
-    public List<KeyValue<File, Boolean>> getAsKeyValueList(final String string) {
-        final List<KeyValue<File, Boolean>> kv = new ArrayList<KeyValue<File, Boolean>>();
+    public List<File> getList(final String string) {
+        final List<File> kv = new ArrayList<File>();
         final String[] list = parseString(string);
         for (final String s : list) {
             final String[] ss = s.split(",");
             if (ss.length != 2) {
                 throw new RuntimeException();
             }
-            kv.add(new KeyValue<File, Boolean>(new File(ss[0]), Boolean.parseBoolean(ss[1])));
+            kv.add(new File(ss[0]));
         }
         return kv;
     }
