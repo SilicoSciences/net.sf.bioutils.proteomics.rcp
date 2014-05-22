@@ -30,9 +30,9 @@ public class DialogDatabase extends Dialog {
 
     private Label labeldb;
 
-    private Button buttonIsIso;
+    private Button buttonIsMultiSpecies;
 
-    private boolean redundant = false;
+    private boolean multispecies = false;
 
     private String db = "n/a";
 
@@ -65,18 +65,18 @@ public class DialogDatabase extends Dialog {
             }
         });
 
-        buttonIsIso = new Button(container, SWT.CHECK);
-        buttonIsIso.setText("Reduandant DB?");
-        buttonIsIso.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
-        buttonIsIso.addSelectionListener(new SelectionListener() {
+        buttonIsMultiSpecies = new Button(container, SWT.CHECK);
+        buttonIsMultiSpecies.setText("Contains muliple species?");
+        buttonIsMultiSpecies.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, false, 1, 1));
+        buttonIsMultiSpecies.addSelectionListener(new SelectionListener() {
             @Override
             public void widgetDefaultSelected(final SelectionEvent e) {
-                redundant = false;
+                multispecies = false;
             }
 
             @Override
             public void widgetSelected(final SelectionEvent e) {
-                redundant = !redundant;
+                multispecies = !multispecies;
             }
         });
         final DropTarget dt = new DropTarget(textdb, DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK);
@@ -106,6 +106,6 @@ public class DialogDatabase extends Dialog {
     }
 
     public String getResult() {
-        return db.trim() + "," + redundant;
+        return db.trim() + "," + multispecies;
     }
 }
