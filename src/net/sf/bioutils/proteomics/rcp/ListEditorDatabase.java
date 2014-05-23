@@ -33,7 +33,7 @@ public class ListEditorDatabase extends ListEditor {
         final String[] list = parseString(string);
         for (final String s : list) {
             final String[] ss = s.split(",");
-            if (ss.length != 2) {
+            if (ss.length != 1) {
                 throw new RuntimeException();
             }
             kv.add(new File(ss[0]));
