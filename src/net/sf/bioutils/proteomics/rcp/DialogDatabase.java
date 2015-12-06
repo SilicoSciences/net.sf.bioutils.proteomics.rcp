@@ -1,6 +1,5 @@
 package net.sf.bioutils.proteomics.rcp;
 
-import org.apache.commons.lang3.CharUtils;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
@@ -71,7 +70,7 @@ public class DialogDatabase extends Dialog {
                 final StringBuilder sb = new StringBuilder();
                 for (final String s : fileList) {
                     sb.append(s);
-                    sb.append(CharUtils.LF);
+                    sb.append("\n");
                 }
                 textdb.setText(sb.toString());
             }
